@@ -1,4 +1,5 @@
 <script setup>
+import NavBar from './components/NavBar.vue'
 import Home from './components/Home.vue'
 import About from './components/About.vue'
 import Experience from './components/Experience.vue'
@@ -8,14 +9,7 @@ import Contact from './components/Contact.vue'
 
 <template>
     <header>
-        <!-- Add some logo/image to link back to the main page -->
-        <div id="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
+        <NavBar />
     </header>
     <main>
         <Home />
