@@ -18,7 +18,7 @@
 
 <style scoped>
     #nav-bar {
-        position: fixed;
+        position: sticky;
         top: 0px;
         left: 0px;
         height: 10vh;

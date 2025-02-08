@@ -8,9 +8,7 @@ import Contact from './components/Contact.vue'
 </script>
 
 <template>
-    <header>
-        <NavBar />
-    </header>
+    <NavBar />
     <main>
         <Home />
         <About />
