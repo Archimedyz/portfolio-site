@@ -4,4 +4,10 @@
     --dark: #2B2D42;
     --mid: #8D99AE;
     --light: #EDF2F4;
+    --poppins-medium: 400;
+    --poppins-heavy: 700;
+}
+
+* {
+    font-family: 'Poppins', serif;
 }
