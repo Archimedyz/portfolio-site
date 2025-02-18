@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 
 const carouselLst = ref([
-    "a backend developer.",
-    "based in Montreal, QC.",
-    "a chess enjoyer."
+    { text: "a backend developer.", img_src: "/assets/laptop-servers.png" },
+    { text: "based in Montreal, QC.", img_src: "/assets/globe-pin.png" },
+    { text: "a chess enjoyer.", img_src: "/assets/chess-pieces.png" }
 ]);
 
 const carouselIndex = ref(0);
@@ -27,13 +27,17 @@ const _ = setInterval(incCarousel, 3000);
                     <p>
                         Nice to meet you. I'm <b>Awais</b> and I am <br />
                         <Transition name="i-am" mode="out-in">
-                            <div :key="carouselIndex">{{ carouselLst[carouselIndex] }}</div>
+                            <div :key="carouselIndex">{{ carouselLst[carouselIndex].text }}</div>
                         </Transition>
                     </p>
                 </div>
             </div>
             <div id="greeting-right" class="half-banner">
-                <!-- TODO: fill this in with heo image or something maybe images matching the carousel items -->
+                <div id="img-container">
+                    <Transition name="img-carousel" mode="out-in">
+                        <img :key="carouselIndex" :src="carouselLst[carouselIndex].img_src" />
+                    </Transition>
+                </div>
             </div>
         </div>
     </Transition>
@@ -54,14 +58,20 @@ const _ = setInterval(incCarousel, 3000);
 
 .half-banner {
     display: inline-block;
-    width: 40%;
-    padding: 5% 0;
+    width: 45%;
+    vertical-align: middle;
+    margin-left: 4%;
+}
+
+#greeting-left {
+    padding-top: 15%;
+    margin-top: 0%;
+    min-height: 400px;
 }
 
 .half-banner > * {
-    margin:auto;
+    margin: auto;
     width: fit-content;
-    padding: 25px;
 }
 
 #welcome-msg > heading {
@@ -72,6 +82,12 @@ const _ = setInterval(incCarousel, 3000);
 #welcome-msg > p {
     font-weight: 500;
     font-size: x-large;
+}
+
+#img-container > img {
+    max-width: 500px;
+    width: 100%;
+    min-width: 200px;
 }
 
 /* Transition CSS */
@@ -96,6 +112,21 @@ const _ = setInterval(incCarousel, 3000);
 }
 
 .i-am-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.img-carousel-enter-active,
+.img-carousel-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.img-carousel-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.img-carousel-leave-to {
   opacity: 0;
   transform: translateY(20px);
 }
