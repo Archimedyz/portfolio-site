@@ -23,5 +23,7 @@ import Contact from './components/Contact.vue'
 </template>
 
 <style scoped>
-
+main > * {
+    display: inline-block;
+}
 </style>

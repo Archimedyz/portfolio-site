@@ -1,6 +1,6 @@
 :root {
-    --primary: #64B547;
-    --secondary: #2A4D14;
+    --primary: #242448;
+    --secondary: #2A516A;
     --dark: #2B2D42;
     --mid: #8D99AE;
     --light: #EDF2F4;
@@ -10,6 +10,7 @@
 
 * {
     font-family: 'Poppins', serif;
+    color: var(--light);
 }
 
 html {

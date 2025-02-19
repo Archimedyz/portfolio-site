@@ -23,7 +23,8 @@
         left: 0px;
         height: 10vh;
         width: 100%;
-        background-color: var(--primary)
+        background-color: var(--primary);
+        z-index: 1;
     }
 
     #nav-content {
