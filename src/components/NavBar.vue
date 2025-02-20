@@ -28,10 +28,24 @@ function hoverOff(item)
 <div class="nav-bar">
     <div class="nav-content">
         <div class="nav-logo">
-            <a href="#" @mouseover="logoAdditionalClass='hoveredLogo'" @mouseleave="logoAdditionalClass=''" class="nav-logo-link" :class="logoAdditionalClass">Awais Ali</a>
+            <a
+                href="#"
+                @mouseover="logoAdditionalClass='hoveredLogo'"
+                @mouseleave="logoAdditionalClass=''"
+                class="nav-logo-link"
+                :class="logoAdditionalClass">
+                Awais Ali
+            </a>
         </div>
         <div class="nav-links">
-            <a v-for="item in navItems" :href="item.anchor" @mouseover="hoverOn(item)" @mouseleave="hoverOff(item)" class="nav-link" :class="item.additionalClass">{{ item.text }}</a>
+            <a v-for="item in navItems"
+                :href="item.anchor"
+                @mouseover="hoverOn(item)"
+                @mouseleave="hoverOff(item)"
+                class="nav-link"
+                :class="item.additionalClass">
+                {{ item.text }}
+            </a>
         </div>
     </div>
 </div>
