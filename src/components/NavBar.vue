@@ -44,7 +44,7 @@ function hoverOff(item)
         left: 0px;
         height: 10vh;
         width: 100%;
-        background-color: var(--primary);
+        background-color: var(--color-primary);
         z-index: 1;
     }
 
@@ -68,7 +68,7 @@ function hoverOff(item)
         font-style: italic;
         font-size: 2rem;
         text-decoration: none;
-        color: var(--primary-light);
+        color: var(--color-primary-light);
         cursor: pointer;
     }
 
@@ -82,16 +82,16 @@ function hoverOff(item)
         font-size: 1.5rem;
         margin-right: 15px;
         text-decoration: none;
-        color: var(--primary-light);
+        color: var(--color-primary-light);
         border-bottom: 2px solid transparent;
     }
 
     .hovered {
-        border-bottom-color: var(--light);
-        color: var(--light);
+        border-bottom-color: var(--color-light);
+        color: var(--color-light);
     }
 
     .hoveredLogo {
-        color: var(--light);
+        color: var(--color-light);
     }
 </style>

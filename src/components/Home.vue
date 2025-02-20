@@ -46,7 +46,7 @@ const _ = setInterval(incCarousel, 3000);
 
 <style scoped>
 #home {
-    background-color: var(--primary);
+    background-color: var(--color-primary);
     width: 100%;
     min-height: 80vh
 }
