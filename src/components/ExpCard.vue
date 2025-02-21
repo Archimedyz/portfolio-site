@@ -1,7 +1,12 @@
 <script setup>
+import { ref } from 'vue';
+
 const props = defineProps([
-    'heading', 'subheading', 'startDate', 'endDate', 'text'
-])
+    'heading', 'subheading', 'startDate', 'endDate', 'shortText', 'longText'
+]);
+
+const showDetails = ref(props.longText || props.shortText);
+const expandDetails = ref(false);
 </script>
 
 <template>
@@ -11,7 +16,15 @@ const props = defineProps([
             <p class="exp-subheading">{{ props.subheading }}</p>
             <p class="exp-years">{{ props.startDate }} → {{ props.endDate }}</p>
         </span>
-        <p class="exp-text">{{ props.text }}</p>
+        <div class="exp-details" v-if="showDetails">
+            <div class="details-summary">
+                <p class="short-text">{{ props.shortText }}</p>
+                <button class="details-btn" @click="expandDetails = !expandDetails">{{ expandDetails ? "Less" : "More" }}</button>
+            </div>
+            <Transition name="expand">
+                <p class="long-text" v-if="expandDetails">{{ props.longText }}</p>
+            </Transition>
+        </div>
     </div>
 </template>
 
@@ -45,8 +58,42 @@ const props = defineProps([
     margin: 0;
 }
 
-.exp-text {
+.exp-details {
+    width: 100%;
+}
+
+.details-summary
+{
+    position: relative;
+    width: 100%;
+}
+
+.details-btn {
+    background-color: transparent;
+    position: absolute;
+    right: 0px;
+}
+
+.short-text {
+    margin: 0;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+
+.long-text {
     margin: 0;
     font-size: 0.8rem;
 }
+
+/* Transition CSS */
+
+/* .expand-leave-to,
+.expand-enter-from {
+    height: 0;
+}
+
+.expand-enter-active,
+.expand-leave-active {
+  transition: all 1s ease-in;
+} */
 </style>

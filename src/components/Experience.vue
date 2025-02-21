@@ -4,14 +4,15 @@ import ExpCard from './ExpCard.vue';
 
 <template>
 <div id="experience">
-    <div class="section-content">
+    <div class="section-content experience-content">
         <h1>My Experience</h1>
         <ExpCard
             heading="123Loadboard"
             subheading="Senior Software Developer"
             startDate="May 2016"
             endDate="Present"
-            text="TODO - Provide more details about the job."
+            short-text="C# - MS SQL - Azure Devop - Jira"
+            long-text="TODO - Provide more details about the job."
         />
         <ExpCard
             heading="MarketUCan"
@@ -28,5 +29,9 @@ import ExpCard from './ExpCard.vue';
 #experience {
     background-color: var(--color-tertiary);
     width: 100%;
+}
+
+.experience-content {
+    margin-bottom: 5%;
 }
 </style>
