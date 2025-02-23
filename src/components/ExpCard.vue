@@ -21,9 +21,11 @@ const expandDetails = ref(false);
                 <p class="short-text">{{ props.shortText }}</p>
                 <button class="details-btn" @click="expandDetails = !expandDetails">{{ expandDetails ? "Less" : "More" }}</button>
             </div>
-            <Transition name="expand">
-                <p class="long-text" v-if="expandDetails">{{ props.longText }}</p>
-            </Transition>
+            <div class="expand-container">
+                <Transition name="expand">
+                    <p v-show="expandDetails" class="long-text">{{ props.longText }}</p>
+                </Transition>
+            </div>
         </div>
     </div>
 </template>
@@ -72,6 +74,9 @@ const expandDetails = ref(false);
     background-color: transparent;
     position: absolute;
     right: 0px;
+    font-size: 0.8rem;
+    border: none;
+    color: var(--color-primary-light);
 }
 
 .short-text {
@@ -81,19 +86,25 @@ const expandDetails = ref(false);
 }
 
 .long-text {
-    margin: 0;
     font-size: 0.8rem;
+    margin: 0;
+}
+
+.expand-container {
+    overflow: hidden;
+    display: block;
 }
 
 /* Transition CSS */
 
-/* .expand-leave-to,
+.expand-leave-to,
 .expand-enter-from {
-    height: 0;
+    margin-top: -5em;
+    opacity: 65%;
 }
 
 .expand-enter-active,
 .expand-leave-active {
-  transition: all 1s ease-in;
-} */
+    transition: all 0.8s ease-in;
+}
 </style>

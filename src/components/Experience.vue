@@ -8,18 +8,19 @@ import ExpCard from './ExpCard.vue';
         <h1>My Experience</h1>
         <ExpCard
             heading="123Loadboard"
-            subheading="Senior Software Developer"
+            subheading="Senior Software Developer & System Integration Lead"
             startDate="May 2016"
             endDate="Present"
             short-text="C# - MS SQL - Azure Devop - Jira"
-            long-text="TODO - Provide more details about the job."
+            long-text="Nearly 9 years of progressive experience. Started as a Junior Backend Developer and advanced through demonstrated technical expertise and leadership. Spearheaded system integrations with third-party partners, managing a dedicated team to ensure seamless platform connectivity. Proficient in C#, MS SQL, and Azure DevOps, with broad exposure to technologies including MQTT, Powershell, and Azure Cloud services. Proven ability to deliver complex projects independently and within diverse team structures, contributing to the team's growth from 5 to over 20 developers. Extensive experience in development, testing, maintenance, and troubleshooting of core systems."
         />
         <ExpCard
             heading="MarketUCan"
             subheading="Web Developer Intern"
             startDate="June 2015"
             endDate="August 2015"
-            text="TODO - Provide more details about the job."
+            short-text="PHP - MS SQL - HTML - JS - CSS"
+            long-text="Experience across the full technology stack, from front-end design to back-end development. Contributed to the design and implementation of website features and tools, working collaboratively with a team of three developers. Demonstrated proficiency in PHP, MS SQL, HTML, JavaScript, and CSS, while primarily managing individual projects."
         />
     </div>
 </div>
