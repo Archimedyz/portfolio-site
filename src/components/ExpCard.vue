@@ -5,6 +5,8 @@ const props = defineProps([
     'heading', 'subheading', 'startDate', 'endDate', 'shortText', 'longText'
 ]);
 
+const hoverMoreLess = ref(false);
+
 const showDetails = ref(props.longText || props.shortText);
 const expandDetails = ref(false);
 </script>
@@ -19,7 +21,15 @@ const expandDetails = ref(false);
         <div class="exp-details" v-if="showDetails">
             <div class="details-summary">
                 <p class="short-text">{{ props.shortText }}</p>
-                <button class="details-btn" @click="expandDetails = !expandDetails">{{ expandDetails ? "Less" : "More" }}</button>
+                <button
+                    class="details-btn"
+                    :class="hoverMoreLess ? 'hovered-btn' : ''"
+                    @mouseover="hoverMoreLess=true"
+                    @mouseleave="hoverMoreLess=false"
+                    @click="expandDetails = !expandDetails"
+                    >
+                    {{ expandDetails ? "Less" : "More" }}
+                </button>
             </div>
             <div class="expand-container">
                 <Transition name="expand">
@@ -32,7 +42,7 @@ const expandDetails = ref(false);
 
 <style scoped>
 .exp-card {
-    border: 2px solid var(--color-mid);
+    border: 0px solid var(--color-mid);
     border-radius: 5px;
     padding: 15px;
 }
@@ -68,21 +78,26 @@ const expandDetails = ref(false);
 {
     position: relative;
     width: 100%;
+    max-width: 300px;
 }
 
 .details-btn {
     background-color: transparent;
-    position: absolute;
-    right: 0px;
+    float: right;
     font-size: 0.8rem;
     border: none;
     color: var(--color-primary-light);
+}
+
+.hovered-btn {
+    color: var(--color-light)
 }
 
 .short-text {
     margin: 0;
     font-size: 0.8rem;
     display: inline-block;
+    width: 80%;
 }
 
 .long-text {
@@ -99,7 +114,7 @@ const expandDetails = ref(false);
 
 .expand-leave-to,
 .expand-enter-from {
-    margin-top: -5em;
+    margin-top: -10em;
     opacity: 65%;
 }
 
