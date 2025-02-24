@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, useTemplateRef, onMounted, onUpdated } from 'vue';
 
 const props = defineProps([
     'heading', 'subheading', 'startDate', 'endDate', 'shortText', 'longText'
@@ -9,6 +9,35 @@ const hoverMoreLess = ref(false);
 
 const showDetails = ref(props.longText || props.shortText);
 const expandDetails = ref(false);
+
+const expandContent = useTemplateRef('expand-content');
+const expandContentHeight = ref(0);
+
+function toggleDetails(event)
+{
+    expandDetails.value = !expandDetails.value;
+}
+
+function setExpandContentHeight() {
+    if (expandContent.value) {
+        expandContentHeight.value = expandContent.value.offsetHeight;
+    }
+}
+
+const addTransitions = ref(false);
+
+onMounted(() => {
+    // set the content height value after initial render, to avoid being 0.
+    setExpandContentHeight();
+
+    // update values after resizing, as it may affect content height
+    window.addEventListener('resize', setExpandContentHeight);
+});
+
+onUpdated(() => {
+    // only add transition CSS after the first update
+    addTransitions.value = true;
+});
 </script>
 
 <template>
@@ -23,18 +52,27 @@ const expandDetails = ref(false);
                 <p class="short-text">{{ props.shortText }}</p>
                 <button
                     class="details-btn"
-                    :class="hoverMoreLess ? 'hovered-btn' : ''"
+                    :class="{
+                        'hovered-btn' : hoverMoreLess
+                    }"
                     @mouseover="hoverMoreLess=true"
                     @mouseleave="hoverMoreLess=false"
-                    @click="expandDetails = !expandDetails"
+                    @click="toggleDetails"
                     >
                     {{ expandDetails ? "Less" : "More" }}
                 </button>
             </div>
             <div class="expand-container">
-                <Transition name="expand">
-                    <p v-show="expandDetails" class="long-text">{{ props.longText }}</p>
-                </Transition>
+                <p
+                    ref="expand-content"
+                    class="long-text"
+                    :class="{
+                        'show-long-text':  expandDetails,
+                        'long-text-transition': addTransitions
+                    }"
+                    >
+                    {{ props.longText }}
+                </p>
             </div>
         </div>
     </div>
@@ -74,8 +112,7 @@ const expandDetails = ref(false);
     width: 100%;
 }
 
-.details-summary
-{
+.details-summary {
     position: relative;
     width: 100%;
     max-width: 300px;
@@ -87,6 +124,7 @@ const expandDetails = ref(false);
     font-size: 0.8rem;
     border: none;
     color: var(--color-primary-light);
+    font-weight: bold;
 }
 
 .hovered-btn {
@@ -101,25 +139,24 @@ const expandDetails = ref(false);
 }
 
 .long-text {
+    margin-top: v-bind(-expandContentHeight);
     font-size: 0.8rem;
-    margin: 0;
+    margin-bottom: 0;
+    padding-left: 24px;
+    padding-top: 4px;
+}
+
+.long-text-transition {
+    transition: margin-top 0.6s ease-in;
 }
 
 .expand-container {
     overflow: hidden;
     display: block;
+    width: 100%;
 }
 
-/* Transition CSS */
-
-.expand-leave-to,
-.expand-enter-from {
-    margin-top: -10em;
-    opacity: 65%;
-}
-
-.expand-enter-active,
-.expand-leave-active {
-    transition: all 0.8s ease-in;
+.show-long-text {
+    margin-top: 0px;
 }
 </style>
