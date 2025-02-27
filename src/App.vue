@@ -17,8 +17,6 @@ import Contact from './components/Contact.vue'
         <Contact />
     </main>
     <footer>
-        Link to Github<br/>
-        Link to LinkedIn
     </footer>
 </template>
 
