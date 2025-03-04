@@ -4,24 +4,14 @@ import { ref } from 'vue';
 const onHover = ref(false);
 
 const navItems = ref([
-    { anchor: "#home", text: "Home", additionalClass: "" },
-    { anchor: "#about", text: "About", additionalClass: "" },
-    { anchor: "#experience", text: "Experience", additionalClass: "" },
-    { anchor: "#projects", text: "Projects", additionalClass: "" },
-    { anchor: "#contact", text: "Contact", additionalClass: "" }
+    { anchor: "#home", text: "Home", hovered: false },
+    { anchor: "#about", text: "About", hovered: false },
+    { anchor: "#experience", text: "Experience", hovered: false },
+    { anchor: "#projects", text: "Projects", hovered: false },
+    { anchor: "#contact", text: "Contact", hovered: false }
 ]);
 
 const logoHover = ref(false);
-
-function hoverOn(item)
-{
-    item.additionalClass = "hovered";
-}
-
-function hoverOff(item)
-{
-    item.additionalClass = "";
-}
 </script>
 
 <template>
@@ -40,10 +30,10 @@ function hoverOff(item)
         <div class="nav-links">
             <a v-for="item in navItems"
                 :href="item.anchor"
-                @mouseover="hoverOn(item)"
-                @mouseleave="hoverOff(item)"
+                @mouseover="item.hovered=true"
+                @mouseleave="item.hovered=false"
                 class="nav-link"
-                :class="item.additionalClass">
+                :class="{ 'hovered': item.hovered }">
                 {{ item.text }}
             </a>
         </div>
@@ -52,60 +42,60 @@ function hoverOff(item)
 </template>
 
 <style scoped>
-    .nav-bar {
-        position: sticky;
-        top: 0px;
-        left: 0px;
-        height: 10vh;
-        width: 100%;
-        background-color: var(--color-primary);
-        z-index: 1;
-    }
+.nav-bar {
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    height: 10vh;
+    width: 100%;
+    background-color: var(--color-primary);
+    z-index: 1;
+}
 
-    .nav-content {
-        position: relative;
-        height: 100%
-    }
+.nav-content {
+    position: relative;
+    height: 100%
+}
 
-    .nav-content > div {
-        position: absolute;
-        bottom: 5px;
-    }
+.nav-content > div {
+    position: absolute;
+    bottom: 5px;
+}
 
-    .nav-logo {
-        display: inline-flex;
-        left: 50px;
-    }
+.nav-logo {
+    display: inline-flex;
+    left: 50px;
+}
 
-    .nav-logo-link {
-        font-family: "Outfit", serif;
-        font-style: bold;
-        font-size: 2rem;
-        text-decoration: none;
-        color: var(--color-primary-light);
-        cursor: pointer;
-    }
+.nav-logo-link {
+    font-family: "Outfit", serif;
+    font-style: bold;
+    font-size: 2rem;
+    text-decoration: none;
+    color: var(--color-primary-light);
+    cursor: pointer;
+}
 
-    .nav-links {
-        display: inline-flex;
-        right: 20px;
-    }
+.nav-links {
+    display: inline-flex;
+    right: 20px;
+}
 
-    .nav-link {
-        vertical-align: top;
-        font-size: 1.5rem;
-        margin-right: 15px;
-        text-decoration: none;
-        color: var(--color-primary-light);
-        border-bottom: 2px solid transparent;
-    }
+.nav-link {
+    vertical-align: top;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    text-decoration: none;
+    color: var(--color-primary-light);
+    border-bottom: 2px solid transparent;
+}
 
-    .hovered {
-        border-bottom-color: var(--color-light);
-        color: var(--color-light);
-    }
+.hovered {
+    border-bottom-color: var(--color-light);
+    color: var(--color-light);
+}
 
-    .hoveredLogo {
-        color: var(--color-light);
-    }
+.hoveredLogo {
+    color: var(--color-light);
+}
 </style>
