@@ -11,7 +11,7 @@ const navItems = ref([
     { anchor: "#contact", text: "Contact", additionalClass: "" }
 ]);
 
-const logoAdditionalClass = ref("");
+const logoHover = ref(false);
 
 function hoverOn(item)
 {
@@ -30,10 +30,10 @@ function hoverOff(item)
         <div class="nav-logo">
             <a
                 href="#"
-                @mouseover="logoAdditionalClass='hoveredLogo'"
-                @mouseleave="logoAdditionalClass=''"
+                @mouseover="logoHover=true"
+                @mouseleave="logoHover=false"
                 class="nav-logo-link"
-                :class="logoAdditionalClass">
+                :class="{'hoveredLogo': logoHover}">
                 Awais Ali
             </a>
         </div>
@@ -78,8 +78,8 @@ function hoverOff(item)
     }
 
     .nav-logo-link {
-        font-family: "Playwrite GB S", serif;
-        font-style: italic;
+        font-family: "Outfit", serif;
+        font-style: bold;
         font-size: 2rem;
         text-decoration: none;
         color: var(--color-primary-light);
