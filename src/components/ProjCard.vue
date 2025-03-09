@@ -1,10 +1,7 @@
 <script setup>
-import { ref } from 'vue';
-
 const props = defineProps([
     'title', 'description', 'projectTech', 'imageFileName', 'link'
-])
-
+]);
 </script>
 
 <template>

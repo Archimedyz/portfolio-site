@@ -1,19 +1,37 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import Expand from './Expand.vue'
+
 
 const isLogoHover = ref(false);
 const isNavToggleHovered = ref(false);
 
-const isExpanded = ref(false);
+const windowWidth = ref(window.innerWidth);
+const isMobileView = computed(() => windowWidth.value < 768);
+
+const isExpanded = ref(!isMobileView.value);
 
 const navItems = ref([
     { anchor: "#home", text: "Home", hovered: false },
     { anchor: "#about", text: "About", hovered: false },
     { anchor: "#experience", text: "Experience", hovered: false },
-    // { anchor: "#projects", text: "Projects", hovered: false },
-    // { anchor: "#contact", text: "Contact", hovered: false }
+    { anchor: "#projects", text: "Projects", hovered: false },
+    { anchor: "#contact", text: "Contact", hovered: false }
 ]);
+
+onMounted(() => {
+    window.addEventListener("resize", () => {
+        let wasNotMobileView = !isMobileView.value;
+        windowWidth.value = window.innerWidth;
+        if (!isMobileView.value) {
+            isExpanded.value = true;
+        }
+        else if (wasNotMobileView)
+        {
+            isExpanded.value = false;
+        }
+    });
+});
 </script>
 
 <template>
@@ -38,6 +56,7 @@ const navItems = ref([
                 @mouseover="isNavToggleHovered=true"
                 @mouseleave="isNavToggleHovered=false"
                 :class="{'hovered': isNavToggleHovered}"
+                v-if="isMobileView"
             >
                 <g fill="none" stroke="currentColor" stroke-width="3">
                     <path
@@ -100,7 +119,6 @@ const navItems = ref([
     text-align: right;
 }
 
-
 .nav-toggle {
     height: 30px;
     cursor: pointer;
@@ -115,7 +133,7 @@ const navItems = ref([
 
 .nav-link-flex {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
 }
 
 .nav-link {
@@ -135,5 +153,11 @@ const navItems = ref([
 .hovered path,
 .hoveredLogo {
     color: var(--color-light);
+}
+
+@media (max-width: 768px) {
+    .nav-link-flex {
+        flex-direction: column;
+    }
 }
 </style>

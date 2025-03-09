@@ -12,7 +12,6 @@ function setExpandHeight() {
     if (expandRef.value) {
         expandHeight.value = expandRef.value.offsetHeight;
     }
-    console.log("height: " + expandHeight.value);
 }
 
 const addTransitions = ref(false);
