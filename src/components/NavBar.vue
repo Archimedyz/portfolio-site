@@ -1,41 +1,63 @@
 <script setup>
 import { ref } from 'vue';
+import Expand from './Expand.vue'
 
-const onHover = ref(false);
+const isLogoHover = ref(false);
+const isNavToggleHovered = ref(false);
+
+const isExpanded = ref(false);
 
 const navItems = ref([
     { anchor: "#home", text: "Home", hovered: false },
     { anchor: "#about", text: "About", hovered: false },
     { anchor: "#experience", text: "Experience", hovered: false },
-    { anchor: "#projects", text: "Projects", hovered: false },
-    { anchor: "#contact", text: "Contact", hovered: false }
+    // { anchor: "#projects", text: "Projects", hovered: false },
+    // { anchor: "#contact", text: "Contact", hovered: false }
 ]);
-
-const logoHover = ref(false);
 </script>
 
 <template>
 <div class="nav-bar">
     <div class="nav-content">
-        <div class="nav-logo">
+        <div class="logo-container">
             <a
                 href="#"
-                @mouseover="logoHover=true"
-                @mouseleave="logoHover=false"
-                class="nav-logo-link"
-                :class="{'hoveredLogo': logoHover}">
+                class="logo"
+                @mouseover="isLogoHover=true"
+                @mouseleave="isLogoHover=false"
+                :class="{'hoveredLogo': isLogoHover}"
+            >
                 Awais Ali
             </a>
         </div>
-        <div class="nav-links">
-            <a v-for="item in navItems"
-                :href="item.anchor"
-                @mouseover="item.hovered=true"
-                @mouseleave="item.hovered=false"
-                class="nav-link"
-                :class="{ 'hovered': item.hovered }">
-                {{ item.text }}
-            </a>
+        <div class="nav-menu">
+            <svg
+                class="nav-toggle"
+                viewBox="0 0 30 30"
+                @click="isExpanded=!isExpanded"
+                @mouseover="isNavToggleHovered=true"
+                @mouseleave="isNavToggleHovered=false"
+                :class="{'hovered': isNavToggleHovered}"
+            >
+                <g fill="none" stroke="currentColor" stroke-width="3">
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2 4h26M2 12h26M2 20h26"/>
+                </g>
+            </svg>
+            <Expand :show="isExpanded">
+                <div class="nav-link-flex">
+                    <a v-for="item in navItems"
+                        :href="item.anchor"
+                        @mouseover="item.hovered=true"
+                        @mouseleave="item.hovered=false"
+                        class="nav-link"
+                        :class="{ 'hovered': item.hovered }">
+                        {{ item.text }}
+                    </a>
+                </div>
+            </Expand>
         </div>
     </div>
 </div>
@@ -46,28 +68,26 @@ const logoHover = ref(false);
     position: sticky;
     top: 0px;
     left: 0px;
-    height: 10vh;
     width: 100%;
+    height: auto;
     background-color: var(--color-primary);
     z-index: 1;
 }
 
 .nav-content {
-    position: relative;
-    height: 100%
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    padding: 15px;
 }
 
-.nav-content > div {
-    position: absolute;
-    bottom: 5px;
+.logo-container {
+    margin-left: 30px;
 }
 
-.nav-logo {
-    display: inline-flex;
-    left: 50px;
-}
-
-.nav-logo-link {
+.logo {
     font-family: "Outfit", serif;
     font-style: bold;
     font-size: 2rem;
@@ -76,9 +96,26 @@ const logoHover = ref(false);
     cursor: pointer;
 }
 
-.nav-links {
-    display: inline-flex;
-    right: 20px;
+.nav-menu {
+    text-align: right;
+}
+
+
+.nav-toggle {
+    height: 30px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 8px;
+}
+
+.nav-toggle path {
+    color: var(--color-primary-light);
+}
+
+.nav-link-flex {
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .nav-link {
@@ -95,6 +132,7 @@ const logoHover = ref(false);
     color: var(--color-light);
 }
 
+.hovered path,
 .hoveredLogo {
     color: var(--color-light);
 }
