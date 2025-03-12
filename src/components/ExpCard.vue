@@ -54,7 +54,7 @@ const expandDetails = ref(false);
 
 }
 .exp-summary {
-    width: 80%;
+    width: 90%;
 }
 
 .exp-subheading {
@@ -76,9 +76,12 @@ const expandDetails = ref(false);
 }
 
 .details-summary {
-    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
     width: 100%;
-    max-width: 300px;
+    max-width: 500px;
 }
 
 .details-btn {
@@ -99,6 +102,7 @@ const expandDetails = ref(false);
     font-size: 0.8rem;
     display: inline-block;
     width: 80%;
+    max-width: 500px;
 }
 
 .long-text {
@@ -107,5 +111,6 @@ const expandDetails = ref(false);
     margin-bottom: 0;
     padding-left: 24px;
     padding-top: 4px;
+    max-width: 500px;
 }
 </style>

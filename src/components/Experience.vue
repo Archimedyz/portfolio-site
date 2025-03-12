@@ -53,7 +53,7 @@ import ExpCard from './ExpCard.vue';
 
 .timeline {
     display: inline-block;
-    width: 80%;
+    width: 100%;
     position: relative;
 }
 
@@ -71,7 +71,7 @@ import ExpCard from './ExpCard.vue';
 }
 
 .timeline > * {
-    margin-left: 5%;
+    margin-left: 20px;
 }
 
 .timeline > *::before {
