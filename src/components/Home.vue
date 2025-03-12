@@ -20,24 +20,24 @@ const _ = setInterval(incCarousel, 3000);
 <template>
 <div id="home">
     <Transition name="fade" appear>
-        <div id="greeting-banner">
-            <div id="greeting-left" class="half-banner">
-                <div id="welcome-msg">
-                    <heading>Ahoy! 👋</heading>
-                    <p>
-                        Nice to meet you. I'm <b>Awais</b> and I am <br />
-                        <Transition name="i-am" mode="out-in">
-                            <div :key="carouselIndex">{{ carouselLst[carouselIndex].text }}</div>
-                        </Transition>
-                    </p>
-                </div>
-            </div>
-            <div id="greeting-right" class="half-banner">
-                <div id="img-container">
-                    <Transition name="img-carousel" mode="out-in">
-                        <img :key="carouselIndex" :src="carouselLst[carouselIndex].img_src" />
+        <div class="greeting-banner">
+            <div class="half-banner">
+                <p class="welcome-heading">Ahoy! 👋</p>
+                <p class="welcome-msg">
+                    Nice to meet you. I'm <b>Awais</b> and I am <br />
+                    <Transition name="carousel" mode="out-in">
+                        <div :key="carouselIndex">{{ carouselLst[carouselIndex].text }}</div>
                     </Transition>
-                </div>
+                </p>
+            </div>
+            <div class="half-banner">
+                <Transition name="carousel" mode="out-in">
+                    <img
+                        class="carousel-img"
+                        :key="carouselIndex"
+                        :src="carouselLst[carouselIndex].img_src"
+                    />
+                </Transition>
             </div>
         </div>
     </Transition>
@@ -48,42 +48,34 @@ const _ = setInterval(incCarousel, 3000);
 #home {
     background-color: var(--color-primary);
     width: 100%;
-    min-height: 80vh
+    min-height: auto
 }
 
-#greeting-banner {
+.greeting-banner {
     width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 50px 20px;
 }
 
 .half-banner {
     display: inline-block;
-    width: 45%;
-    vertical-align: middle;
-    margin-left: 4%;
+    width: 40%;
 }
 
-#greeting-left {
-    padding-top: 15%;
-    margin-top: 0%;
-    min-height: 400px;
-}
-
-.half-banner > * {
-    margin: auto;
-    width: fit-content;
-}
-
-#welcome-msg > heading {
+.welcome-heading {
     font-weight: 500;
     font-size: xxx-large;
 }
 
-#welcome-msg > p {
+.welcome-msg {
     font-weight: 500;
     font-size: x-large;
 }
 
-#img-container > img {
+.carousel-img {
     max-width: 500px;
     width: 100%;
     min-width: 200px;
@@ -100,33 +92,39 @@ const _ = setInterval(incCarousel, 3000);
     transition: all 0.8s ease-out;
 }
 
-.i-am-enter-active,
-.i-am-leave-active {
+.carousel-enter-active,
+.carousel-leave-active {
     transition: all 0.25s ease-out;
 }
 
-.i-am-enter-from {
+.carousel-enter-from {
     opacity: 0;
     transform: translateY(20px);
 }
 
-.i-am-leave-to {
+.carousel-leave-to {
     opacity: 0;
     transform: translateY(20px);
 }
 
-.img-carousel-enter-active,
-.img-carousel-leave-active {
-    transition: all 0.25s ease-out;
-}
+/* Mobile styles */
 
-.img-carousel-enter-from {
-    opacity: 0;
-    transform: translateY(20px);
-}
+@media (max-width: 576px) {
+    .greeting-banner {
+        flex-direction: column;
+        padding: 0px 0px;
+    }
 
-.img-carousel-leave-to {
-    opacity: 0;
-    transform: translateY(20px);
+    .half-banner {
+        width: 90%;
+    }
+
+    .carousel-img {
+        display: block;
+        width: 80%;
+        max-width: 300px;
+        min-width: 150px;
+        margin: auto;
+    }
 }
 </style>

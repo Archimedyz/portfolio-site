@@ -7,9 +7,9 @@ const isLogoHover = ref(false);
 const isNavToggleHovered = ref(false);
 
 const windowWidth = ref(window.innerWidth);
-const isMobileView = computed(() => windowWidth.value < 768);
+const isTabletView = computed(() => windowWidth.value < 768);
 
-const isExpanded = ref(!isMobileView.value);
+const isExpanded = ref(!isTabletView.value);
 
 const navItems = ref([
     { anchor: "#home", text: "Home", hovered: false },
@@ -21,9 +21,9 @@ const navItems = ref([
 
 onMounted(() => {
     window.addEventListener("resize", () => {
-        let wasNotMobileView = !isMobileView.value;
+        let wasNotMobileView = !isTabletView.value;
         windowWidth.value = window.innerWidth;
-        if (!isMobileView.value) {
+        if (!isTabletView.value) {
             isExpanded.value = true;
         }
         else if (wasNotMobileView)
@@ -56,7 +56,7 @@ onMounted(() => {
                 @mouseover="isNavToggleHovered=true"
                 @mouseleave="isNavToggleHovered=false"
                 :class="{'hovered': isNavToggleHovered}"
-                v-if="isMobileView"
+                v-if="isTabletView"
             >
                 <g fill="none" stroke="currentColor" stroke-width="3">
                     <path
@@ -155,9 +155,23 @@ onMounted(() => {
     color: var(--color-light);
 }
 
+/* Tablet styles */
+
 @media (max-width: 768px) {
     .nav-link-flex {
         flex-direction: column;
+    }
+}
+
+/* Mobile styles */
+
+@media (max-width: 576px) {
+    .logo {
+        font-size: 1.7rem;
+    }
+
+    .nav-link {
+        font-size: 1.4rem;
     }
 }
 </style>
