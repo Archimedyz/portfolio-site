@@ -1,5 +1,6 @@
 <script setup>
-import { ref, useTemplateRef, onMounted, onUpdated } from 'vue';
+import { ref } from 'vue';
+import Expand from './Expand.vue';
 
 const props = defineProps([
     'heading', 'subheading', 'startDate', 'endDate', 'shortText', 'longText'
@@ -9,35 +10,6 @@ const hoverMoreLess = ref(false);
 
 const showDetails = ref(props.longText || props.shortText);
 const expandDetails = ref(false);
-
-const expandContent = useTemplateRef('expand-content');
-const expandContentHeight = ref(0);
-
-function toggleDetails(event)
-{
-    expandDetails.value = !expandDetails.value;
-}
-
-function setExpandContentHeight() {
-    if (expandContent.value) {
-        expandContentHeight.value = expandContent.value.offsetHeight;
-    }
-}
-
-const addTransitions = ref(false);
-
-onMounted(() => {
-    // set the content height value after initial render, to avoid being 0.
-    setExpandContentHeight();
-
-    // update values after resizing, as it may affect content height
-    window.addEventListener('resize', setExpandContentHeight);
-});
-
-onUpdated(() => {
-    // only add transition CSS after the first update
-    addTransitions.value = true;
-});
 </script>
 
 <template>
@@ -57,23 +29,14 @@ onUpdated(() => {
                     }"
                     @mouseover="hoverMoreLess=true"
                     @mouseleave="hoverMoreLess=false"
-                    @click="toggleDetails"
+                    @click="expandDetails = !expandDetails"
                     >
                     {{ expandDetails ? "Less" : "More" }}
                 </button>
             </div>
-            <div class="expand-container">
-                <p
-                    ref="expand-content"
-                    class="long-text"
-                    :class="{
-                        'show-long-text':  expandDetails,
-                        'long-text-transition': addTransitions
-                    }"
-                    >
-                    {{ props.longText }}
-                </p>
-            </div>
+            <Expand :show="expandDetails">
+                <p class="long-text">{{ props.longText }}</p>
+            </Expand>
         </div>
     </div>
 </template>
@@ -144,19 +107,5 @@ onUpdated(() => {
     margin-bottom: 0;
     padding-left: 24px;
     padding-top: 4px;
-}
-
-.long-text-transition {
-    transition: margin-top 0.6s ease-in;
-}
-
-.expand-container {
-    overflow: hidden;
-    display: block;
-    width: 100%;
-}
-
-.show-long-text {
-    margin-top: 0px;
 }
 </style>
