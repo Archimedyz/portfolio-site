@@ -42,3 +42,18 @@ body {
 .section-content {
     padding: 2% 8%;
 }
+
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .section-content {
+        padding: 2% 6%;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 576px) {
+    .section-content {
+        padding: 2% 4%;
+    }
+}

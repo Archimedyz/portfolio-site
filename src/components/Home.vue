@@ -57,7 +57,7 @@ const _ = setInterval(incCarousel, 3000);
     flex-flow: row nowrap;
     justify-content: space-evenly;
     align-items: center;
-    padding: 50px 20px;
+    padding: 50px 0px;
 }
 
 .half-banner {
@@ -112,7 +112,7 @@ const _ = setInterval(incCarousel, 3000);
 @media (max-width: 576px) {
     .greeting-banner {
         flex-direction: column;
-        padding: 0px 0px;
+        padding: 0;
     }
 
     .half-banner {
