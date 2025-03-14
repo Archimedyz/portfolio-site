@@ -9,11 +9,12 @@ import ProjCard from './ProjCard.vue';
         <div class="project-list">
             <ProjCard
                 class="project-card"
-                title="Portfolio Website"
+                title="SUPER DUPER LONG NAME YO Portfolio Website"
                 description="A portfolio site designed with Vue. You're looking at it right now!"
                 :projectTech="['Vue', 'JS', 'CSS', 'HTML']"
                 imageFileName="proj-portfolio-site.png"
-                link="/"
+                siteLink="/"
+                repoLink="https://github.com/Archimedyz/portfolio-site"
             />
         </div>
     </div>

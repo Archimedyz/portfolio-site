@@ -1,7 +1,19 @@
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps([
-    'title', 'description', 'projectTech', 'imageFileName', 'link'
+    'title', 'description', 'projectTech', 'imageFileName', 'siteLink', 'repoLink'
 ]);
+
+function getLinkTarget(link) {
+    return /^https?:\/\//.test(link) // test for absolute link
+        ? '_blank'
+        : '_self';
+}
+
+const siteLinkTarget = computed(() => getLinkTarget(props.siteLink));
+const repoLinkTarget = computed(() => getLinkTarget(props.repoLink));
+
 </script>
 
 <template>
@@ -12,13 +24,22 @@ const props = defineProps([
         <div class="project-info-div">
             <div class="project-title-div">
                 <h3 class="project-title">{{ props.title }}</h3>
-                <a :href="props.link">
-                    <img 
-                        class="go-to-img" 
-                        src="/assets/icons/open-link.png"
-                        alt="go to project"
-                    />
-                </a>
+                <div class="project-links">
+                    <a v-if="props.siteLink" :href="props.siteLink" :target="siteLinkTarget" rel="noopener noreferrer">
+                        <img
+                            class="link-img"
+                            src="/assets/icons/open-link.png"
+                            alt="go to project"
+                        />
+                    </a>
+                    <a v-if="props.repoLink" :href="props.repoLink" :target="repoLinkTarget" rel="noopener noreferrer">
+                        <img
+                            class="link-img"
+                            src="/assets/icons/Github_Invertocat_light.svg"
+                            alt="go to repo"
+                        />
+                    </a>
+                </div>
             </div>
             <div class="project-technologies">
                 <span v-for="(tech, i) in props.projectTech" class="tech-item">
@@ -59,17 +80,22 @@ const props = defineProps([
 
 .project-title-div{
     width: 100%;
-    display: block;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .project-title {
-    display: inline-block;
     vertical-align: middle;
     margin: 5px 5px 5px 0;
+    max-width: 75%;
 }
 
-.go-to-img {
+.link-img {
     height: 24px;
+    margin-top: 6px;
+    margin-left: 6px;
     vertical-align: middle;
     display: inline-block;
 }

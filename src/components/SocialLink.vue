@@ -16,7 +16,10 @@ const hovered = ref(false);
         }"
         @mouseover="hovered=true"
         @mouseleave="hovered=false"
-        :href="props.link">
+        :href="props.link"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
         <img
             class="social-logo"
             :src="props.logoSrc"
