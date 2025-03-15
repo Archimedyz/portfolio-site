@@ -19,7 +19,7 @@ const repoLinkTarget = computed(() => getLinkTarget(props.repoLink));
 <template>
     <div class='project-card'>
         <div class="project-img">
-            <img :src="'/assets/' + props.imageFileName" alt="project image"/>
+            <img :src="'src/assets/' + props.imageFileName" alt="project image"/>
         </div>
         <div class="project-info-div">
             <div class="project-title-div">
@@ -28,14 +28,14 @@ const repoLinkTarget = computed(() => getLinkTarget(props.repoLink));
                     <a v-if="props.siteLink" :href="props.siteLink" :target="siteLinkTarget" rel="noopener noreferrer">
                         <img
                             class="link-img"
-                            src="/assets/icons/open-link.png"
+                            src="/src/assets/icons/open-link.png"
                             alt="go to project"
                         />
                     </a>
                     <a v-if="props.repoLink" :href="props.repoLink" :target="repoLinkTarget" rel="noopener noreferrer">
                         <img
                             class="link-img"
-                            src="/assets/icons/Github_Invertocat_light.svg"
+                            src="/src/assets/icons/Github_Invertocat_light.svg"
                             alt="go to repo"
                         />
                     </a>

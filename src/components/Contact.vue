@@ -10,12 +10,12 @@ import SocialLink from './SocialLink.vue';
         <div class="social-links">
             <SocialLink
                 link="https://github.com/Archimedyz"
-                logoSrc="/assets/logos/GitHub-Lockup-Dark.svg"
+                logoSrc="/src/assets/logos/GitHub-Lockup-Dark.svg"
                 logoAlt="Github logo"
             />
             <SocialLink
                 link="https://www.linkedin.com/in/awaisali1248/"
-                logoSrc="/assets/logos/LinkedIn-Logo.png"
+                logoSrc="/src/assets/logos/LinkedIn-Logo.png"
                 logoAlt="LinkedIn logo"
             />
         </div>

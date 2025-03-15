@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 
 const carouselLst = ref([
-    { text: "a backend developer.", img_src: "/assets/laptop-servers.png" },
-    { text: "based in Montreal, QC.", img_src: "/assets/globe-pin.png" },
-    { text: "a chess enjoyer.", img_src: "/assets/chess-pieces.png" }
+    { text: "a backend developer.", img_src: "/src/assets/laptop-servers.png" },
+    { text: "based in Montreal, QC.", img_src: "/src/assets/globe-pin.png" },
+    { text: "a chess enjoyer.", img_src: "/src/assets/chess-pieces.png" }
 ]);
 
 const carouselIndex = ref(0);
