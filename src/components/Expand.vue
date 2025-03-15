@@ -6,22 +6,23 @@ var props = defineProps([
 ]);
 
 const expandRef = useTemplateRef('expand');
-const expandHeight = ref(0);
 
-function setExpandHeight() {
+const expandHeight = computed(() => {
     if (expandRef.value) {
-        expandHeight.value = expandRef.value.offsetHeight;
+        return expandRef.value.offsetHeight;
     }
-}
+
+    return 0;
+});
 
 const addTransitions = ref(false);
 
 onMounted(() => {
-    // set the content height value after initial render, to avoid being 0.
-    setExpandHeight();
-
     // update values after resizing, as it may affect content height
-    window.addEventListener('resize', setExpandHeight);
+    window.addEventListener('resize', () => {
+        // Force re-evaluation of the computed property by accessing it.
+        expandHeight.value;
+    });
 });
 
 onUpdated(() => {
