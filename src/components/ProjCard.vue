@@ -1,8 +1,12 @@
 <script setup>
 import { computed } from 'vue';
 
+// asset imports
+import openLinkImage from '/src/assets/icons/open-link.png';
+import repoLinkImage from '/src/assets/icons/Github_Invertocat_light.svg';
+
 const props = defineProps([
-    'title', 'description', 'projectTech', 'imageFileName', 'siteLink', 'repoLink'
+    'title', 'description', 'projectTech', 'imgSrc', 'siteLink', 'repoLink'
 ]);
 
 function getLinkTarget(link) {
@@ -19,7 +23,7 @@ const repoLinkTarget = computed(() => getLinkTarget(props.repoLink));
 <template>
     <div class='project-card'>
         <div class="project-img">
-            <img :src="'src/assets/' + props.imageFileName" alt="project image"/>
+            <img :src="props.imgSrc" alt="project image"/>
         </div>
         <div class="project-info-div">
             <div class="project-title-div">
@@ -28,14 +32,14 @@ const repoLinkTarget = computed(() => getLinkTarget(props.repoLink));
                     <a v-if="props.siteLink" :href="props.siteLink" :target="siteLinkTarget" rel="noopener noreferrer">
                         <img
                             class="link-img"
-                            src="/src/assets/icons/open-link.png"
+                            :src="openLinkImage"
                             alt="go to project"
                         />
                     </a>
                     <a v-if="props.repoLink" :href="props.repoLink" :target="repoLinkTarget" rel="noopener noreferrer">
                         <img
                             class="link-img"
-                            src="/src/assets/icons/Github_Invertocat_light.svg"
+                            :src="repoLinkImage"
                             alt="go to repo"
                         />
                     </a>
@@ -105,6 +109,4 @@ const repoLinkTarget = computed(() => getLinkTarget(props.repoLink));
     font-size: 0.8rem;
     font-weight: bold;
 }
-
-
 </style>

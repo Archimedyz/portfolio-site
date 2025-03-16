@@ -1,5 +1,10 @@
 <script setup>
+// component imports
 import SocialLink from './SocialLink.vue';
+
+// asset imports
+import githubLogoImage from '/src/assets/logos/GitHub-Lockup-Dark.svg';
+import linkedInLogoImage from '/src/assets/logos/LinkedIn-Logo.png';
 </script>
 
 <template>
@@ -10,12 +15,12 @@ import SocialLink from './SocialLink.vue';
         <div class="social-links">
             <SocialLink
                 link="https://github.com/Archimedyz"
-                logoSrc="/src/assets/logos/GitHub-Lockup-Dark.svg"
+                :logoSrc="githubLogoImage"
                 logoAlt="Github logo"
             />
             <SocialLink
                 link="https://www.linkedin.com/in/awaisali1248/"
-                logoSrc="/src/assets/logos/LinkedIn-Logo.png"
+                :logoSrc="linkedInLogoImage"
                 logoAlt="LinkedIn logo"
             />
         </div>

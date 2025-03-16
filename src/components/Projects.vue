@@ -1,5 +1,9 @@
 <script setup>
+// component imports
 import ProjCard from './ProjCard.vue';
+
+// asset imports
+import portfolioImage from '/src/assets/proj-portfolio-site.png';
 </script>
 
 <template>
@@ -12,7 +16,7 @@ import ProjCard from './ProjCard.vue';
                 title="SUPER DUPER LONG NAME YO Portfolio Website"
                 description="A portfolio site designed with Vue. You're looking at it right now!"
                 :projectTech="['Vue', 'JS', 'CSS', 'HTML']"
-                imageFileName="proj-portfolio-site.png"
+                :imgSrc="portfolioImage"
                 siteLink="/"
                 repoLink="https://github.com/Archimedyz/portfolio-site"
             />
