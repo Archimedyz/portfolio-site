@@ -108,7 +108,6 @@ onMounted(() => {
 
 .logo {
     font-family: "Outfit", serif;
-    font-style: bold;
     font-size: 2rem;
     text-decoration: none;
     color: var(--color-primary-light);
