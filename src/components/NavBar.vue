@@ -96,7 +96,6 @@ onMounted(() => {
 .nav-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     flex-flow: row nowrap;
     align-items: flex-start;
     padding: 15px;

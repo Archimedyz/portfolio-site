@@ -1,5 +1,6 @@
 <script setup>
-import { computed, ref, useTemplateRef, onMounted, onUpdated } from 'vue';
+import { ref, useTemplateRef, onMounted, onUpdated } from 'vue';
+import { debounce } from 'lodash';
 
 var props = defineProps([
     'show'
@@ -7,22 +8,33 @@ var props = defineProps([
 
 const expandRef = useTemplateRef('expand');
 
-const expandHeight = computed(() => {
+const expandHeight = ref(0);
+
+const updateExpandHeightOnNextFrame = () => {
+  requestAnimationFrame(() => {
     if (expandRef.value) {
-        return expandRef.value.offsetHeight;
+      // Force a layout recalculation
+      expandRef.value.style.display = 'block';
+      expandHeight.value = expandRef.value.offsetHeight;
+      expandRef.value.style.display = '';
+    }
+    else {
+      expandHeight.value = 0;
     }
 
-    return 0;
-});
+    addTransitions.value = false;
+  });
+};
 
 const addTransitions = ref(false);
 
 onMounted(() => {
+    const debouncedResizeUpdate = debounce(updateExpandHeightOnNextFrame, 100);
+
     // update values after resizing, as it may affect content height
-    window.addEventListener('resize', () => {
-        // Force re-evaluation of the computed property by accessing it.
-        expandHeight.value;
-    });
+    window.addEventListener('resize', debouncedResizeUpdate);
+
+    updateExpandHeightOnNextFrame();
 });
 
 onUpdated(() => {
