@@ -8,6 +8,19 @@ If you like what you see, feel free to fork it and use it. All the info is hardc
 
 ## Running & Building
 
+> [!IMPORTANT]
+> Before running any of the commands below, you should make sure you install all the node modules. You can do this by running:
+>
+> ```bash
+> # using npm
+> npm install
+> 
+> # using yarn
+> yarn
+> ```
+
+---
+
 To run the site locally, just use the `dev` command in the root directory of the repo:
 
 ```bash
@@ -27,6 +40,8 @@ npm run build
 # using yarn
 yarn build
 ```
+
+This will create a `dist/` directory with the built files for the site. It should include the `index.html`, any public assets such as favicons and manifests, and an `assets/` directory with all other assets and the main CSS and JS files.
 
 After building, if you want to do a quick smoke test, you can preview your build using `preview`:
 
