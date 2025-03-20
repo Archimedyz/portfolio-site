@@ -40,7 +40,7 @@ import ExpCard from './ExpCard.vue';
 }
 
 .experience-content {
-    margin-bottom: 5%;
+    padding-bottom: 5%;
 }
 
 .work-exp {
@@ -60,12 +60,12 @@ import ExpCard from './ExpCard.vue';
 .timeline::before {
     content: '';
     width: 2px;
-    background-color: var(--color-mid);
+    background-color: var(--color-accent);
     display: block;
     top: 0;
     bottom: 0;
     position: absolute;
-    border: 1px solid var(--color-mid);
+    border: 1px solid var(--color-accent);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -74,7 +74,7 @@ import ExpCard from './ExpCard.vue';
     margin-left: 20px;
 }
 
-.timeline > *::before {
+.timeline > *::before { /* points on the timeline */
     content: '';
     width: 10px;
     height: 10px;

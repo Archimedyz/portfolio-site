@@ -13,7 +13,7 @@ import portfolioImage from '/src/assets/proj-portfolio-site.png';
         <div class="project-list">
             <ProjCard
                 class="project-card"
-                title="SUPER DUPER LONG NAME YO Portfolio Website"
+                title="Portfolio Website"
                 description="A portfolio site designed with Vue. You're looking at it right now!"
                 :projectTech="['Vue', 'JS', 'CSS', 'HTML']"
                 :imgSrc="portfolioImage"
@@ -27,7 +27,7 @@ import portfolioImage from '/src/assets/proj-portfolio-site.png';
 
 <style scoped>
 #projects {
-    background-color: var(--color-quaternary);
+    background-color: var(--color-secondary);
     width: 100%;
 }
 
@@ -40,7 +40,8 @@ import portfolioImage from '/src/assets/proj-portfolio-site.png';
     min-width: 300px;
     width: 40%;
     max-width: 400px;
-    margin: 2% 2%
+    margin: 2% 2%;
+    background-color: var(--color-secondary);
 }
 
 /* Mobile styles */

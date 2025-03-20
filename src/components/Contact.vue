@@ -31,7 +31,7 @@ import linkedInLogoImage from '/src/assets/logos/LinkedIn-Logo.png';
 
 <style scoped>
 #contact {
-    background-color: var(--color-quinary);
+    background-color: var(--color-tertiary);
     width: 100%;
 }
 </style>

@@ -29,7 +29,7 @@ const _ = setInterval(incCarousel, 3000);
             <div class="half-banner">
                 <p class="welcome-heading">Ahoy! 👋</p>
                 <p class="welcome-msg">
-                    Nice to meet you. I'm <b>Awais</b> and I am <br />
+                    Nice to meet you. I'm <span class="name">Awais</span> and I am <br />
                     <Transition name="carousel" mode="out-in">
                         <div :key="carouselIndex">{{ carouselLst[carouselIndex].text }}</div>
                     </Transition>
@@ -78,6 +78,12 @@ const _ = setInterval(incCarousel, 3000);
 .welcome-msg {
     font-weight: 500;
     font-size: x-large;
+}
+
+.name {
+    font-weight: bold;
+    /* text-decoration: underline; */
+    color: var(--color-accent);
 }
 
 .carousel-img {

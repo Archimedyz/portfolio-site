@@ -2,24 +2,22 @@
     /* color variables (Hex) */
     --color-primary: #242448;
     --color-primary-light: #C6D8FF;
-    --color-secondary: #1E1E5A;
-    --color-tertiary: #2B2B64;
-    --color-quaternary: #404080;
-    --color-quinary: #4B4B99;
+    --color-secondary: #4A609F;
+    --color-tertiary: #5873B3;
     --color-dark: #2B2D42;
     --color-mid: #8D99AE;
     --color-light: #EDF2F4;
+    --color-accent: #FFD700;
 
     /* color variables (RGB) */
     --rgb-primary: 36, 36, 72;
     --rgb-primary-light: 198, 216, 255;
-    --rgb-secondary: 30, 30, 90;
-    --rgb-tertiary: 43, 43, 100;
-    --rgb-quaternary: 64, 64, 128;
-    --rgb-quinary: 75, 75, 153;
+    --rgb-secondary: 74, 96, 159;
+    --rgb-tertiary: 88, 115, 179;
     --rgb-dark: 43, 45, 66;
     --rgb-mid: 141, 153, 174;
     --rgb-light: 237, 242, 244;
+    --rgb-accent: 255, 215, 0;
 
     /* font-variables */
     --poppins-medium: 400;
