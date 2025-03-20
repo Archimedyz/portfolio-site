@@ -9,7 +9,7 @@ import linkedInLogoImage from '/src/assets/logos/LinkedIn-Logo.png';
 
 <template>
 <div id="contact">
-    <div class="section-content">
+    <div class="section-content arcs-background">
         <h1>Contact Me</h1>
         <p>Want to connect? You can reach me on my socials below.</p>
         <div class="social-links">

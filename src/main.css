@@ -41,6 +41,63 @@ body {
     padding: 2% 8%;
 }
 
+.dotted-background {
+    background-image: radial-gradient(
+        rgba(var(--rgb-accent), 0.2) 20%,
+        transparent 10%
+    );
+    background-repeat: repeat;
+    background-size: 10px 10px;
+}
+
+.textured-background {
+    background-image:
+      linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.05) 75%);
+    background-size: 20px 20px; /* Adjust size as needed */
+    background-position: 0 0, 10px 10px; /* Offset the second gradient */
+}
+
+.checkered-background {
+    background-image: conic-gradient(
+        rgba(0, 0, 0, 0.03),
+        rgba(0, 0, 0, 0.03) 90deg,
+        transparent 90deg,
+        transparent 180deg,
+        rgba(0, 0, 0, 0.03) 180deg,
+        rgba(0, 0, 0, 0.03) 270deg,
+        transparent 270deg);
+    background-repeat: repeat;
+    background-size: 40px 40px;
+}
+
+.diagonal-background {
+    background-image: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.05) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(0, 0, 0, 0.05) 50%,
+        rgba(0, 0, 0, 0.05) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-repeat: repeat;
+    background-size: 40px 40px;
+}
+
+.arcs-background {
+    background-image: radial-gradient(
+        circle at 75%,
+        transparent,
+        transparent 65%,
+        rgba(0, 0, 0, 0.1) 65%,
+        rgba(0, 0, 0, 0.1) 80%,
+        transparent 80%,
+        transparent
+    );
+    background-repeat: repeat;
+    background-size: 80px 80px;
+}
 
 /* Mobile Styles */
 @media (max-width: 768px) {

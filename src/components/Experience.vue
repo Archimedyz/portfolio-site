@@ -4,7 +4,7 @@ import ExpCard from './ExpCard.vue';
 
 <template>
 <div id="experience">
-    <div class="section-content experience-content">
+    <div class="section-content experience-content checkered-background">
         <h1>My Experience</h1>
         <div class="work-exp">
             <div class="timeline">

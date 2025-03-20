@@ -8,7 +8,7 @@ import portfolioImage from '/src/assets/proj-portfolio-site.png';
 
 <template>
 <div id="projects">
-    <div class="section-content">
+    <div class="section-content dotted-background">
         <h1>Projects</h1>
         <div class="project-list">
             <ProjCard
