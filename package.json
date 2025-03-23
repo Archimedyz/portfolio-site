@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build-prod": "DEPLOYPATH=$DEPLOYPATH vite build",
     "preview": "vite preview"
   }
 }

@@ -4,6 +4,5 @@ deployment:
     - echo "start deploy..."
     - export DEPLOYPATH=/home/sepherot/awaisali.ca
     - npm install # install all npm modules
-    - npm build # this should create the dist/ directory
-    - cp -r ./dist $DEPLOYPATH # Copy full dist/ directory to deploy path. Overwrite existing files.
+    - npm run build-prod # this should build directly into DEPLOYPATH
     - echo "end deploy."
