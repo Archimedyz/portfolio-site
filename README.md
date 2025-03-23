@@ -53,6 +53,18 @@ npm run preview
 yarn preview
 ```
 
+### Deploying to Prod with CPanel
+
+For the CPanel deployment, I have setup a special `build-prod` script, which can be run as follows:
+
+```bash
+# using npm
+npm run build-prod
+
+# using yarn
+yarn build-prod
+```
+
 ## Contributing
 
 For the time being, I am not looking for contributors for this repo/site. It's really just a solo project for me to learn the ropes of frontend development, and have fun.
