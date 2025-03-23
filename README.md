@@ -43,6 +43,10 @@ yarn build
 
 This will create a `dist/` directory with the built files for the site. It should include the `index.html`, any public assets such as favicons and manifests, and an `assets/` directory with all other assets and the main CSS and JS files.
 
+> [!NOTE]
+> You can have the `build` script build into a different directory by setting the `DEPLOYPATH` environment variable.
+> If it's set, then build will use the provided directory for the output.
+
 After building, if you want to do a quick smoke test, you can preview your build using `preview`:
 
 ```bash
@@ -51,18 +55,6 @@ npm run preview
 
 # using yarn
 yarn preview
-```
-
-### Deploying to Prod with CPanel
-
-For the CPanel deployment, I have setup a special `build-prod` script, which can be run as follows:
-
-```bash
-# using npm
-npm run build-prod
-
-# using yarn
-yarn build-prod
 ```
 
 ## Contributing

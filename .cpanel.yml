@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - echo "start deploy..."
-    - export DEPLOYPATH=/home/sepherot/awaisali.ca
+    - DEPLOYPATH=/home/sepherot/awaisali.ca
     - npm install # install all npm modules
-    - npm run build-prod # this should build directly into DEPLOYPATH
+    - npm run build # this should build directly into DEPLOYPATH if specified
     - echo "end deploy."
