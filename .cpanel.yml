@@ -1,8 +1,10 @@
 ---
 deployment:
   tasks:
-    - echo "start deploy..."
+    - echo "[DEPLOY] Starting deploy..."
     - DEPLOYPATH=/home/sepherot/awaisali.ca
+    - echo "[DEPLOY] Installing node modules..."
     - npm install # install all npm modules
+    - echo "[DEPLOY] Building app..."
     - npm run build # this should build directly into DEPLOYPATH if specified
-    - echo "end deploy."
+    - echo "[DEPLOY] Finish deploy."
