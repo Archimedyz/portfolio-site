@@ -31,7 +31,7 @@ const hovered = ref(false);
 <style scoped>
 .social-link {
     background-color: rgba(200, 200, 240, 1);
-    transition: background-color 0.5s ease-in;
+    transition: background-color 0.5s;
     display: inline-block;
     margin-right: 15px;
     margin-bottom: 15px;
@@ -45,7 +45,23 @@ const hovered = ref(false);
 }
 
 .social-logo {
-    max-height: 50px;
-    height: 100%;
+    height: 50px;
+}
+
+
+/* Tablet styles */
+
+@media (max-width: 768px) {
+    .social-logo {
+        height: 45px;
+    }
+}
+
+/* Mobile styles */
+
+@media (max-width: 576px) {
+    .social-logo {
+        height: 40px;
+    }
 }
 </style>
