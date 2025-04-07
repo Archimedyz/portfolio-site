@@ -4,7 +4,7 @@ deployment:
     - echo "[DEPLOY] Starting deploy..."
     - export DEPLOYPATH=/home/sepherot/awaisali.ca
     - echo "[DEPLOY] Installing node modules..."
-    - npm install # install all npm modules
+    - ~/.local/bin/npm install # install all npm modules
     - echo "[DEPLOY] Building app..."
-    - npm run build # this should build directly into DEPLOYPATH if specified
+    - ~/.local/bin/npm run build # this should build directly into DEPLOYPATH if specified
     - echo "[DEPLOY] Finish deploy."
