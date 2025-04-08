@@ -3,6 +3,8 @@ deployment:
   tasks:
     - echo "[DEPLOY] Starting deploy..."
     - export DEPLOYPATH=/home/sepherot/awaisali.ca
+    - echo "[DEPLOY] Initializing NVM..."
+    - source ~/.nvm/nvm.sh # initialize nvm
     - echo "[DEPLOY] Installing node modules..."
     - ~/.local/bin/npm install # install all npm modules
     - echo "[DEPLOY] Building app..."
