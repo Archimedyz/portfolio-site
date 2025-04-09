@@ -4,7 +4,10 @@ deployment:
     - echo "[DEPLOY] Set deploy path..."
     - export DEPLOYPATH=/home/sepherot/awaisali.ca
 
-    - echo "[DEPLOY] Building app..."
+    - echo "[DEPLOY] Removing old files..."
+    - rm -rf $DEPLOYPATH/*
+
+    - echo "[DEPLOY] Copying new files..."
     - cp -r dist/* $DEPLOYPATH
 
     - echo "[DEPLOY] Finished deploying."
