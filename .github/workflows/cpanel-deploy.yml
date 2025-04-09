@@ -17,6 +17,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Set commit hash environment variable
+      run: echo "VITE_COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
@@ -27,6 +30,8 @@ jobs:
 
     - name: Build application
       run: npm run build
+      env:
+        VITE_COMMIT_HASH: ${{ env.VITE_COMMIT_HASH }}
 
     - name: Checkout deploy branch
       uses: actions/checkout@v4
@@ -36,8 +41,8 @@ jobs:
 
     - name: Copy built files to deploy branch
       run: |
-        rm -rf deploy-branch/*
-        cp -r dist/* deploy-branch/
+        rm -rf deploy-branch/dist/*
+        cp -r dist/* deploy-branch/dist/
 
     - name: Commit and push deploy branch
       run: |
