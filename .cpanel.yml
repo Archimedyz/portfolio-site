@@ -1,0 +1,10 @@
+---
+deployment:
+  tasks:
+    - echo "[DEPLOY] Set deploy path..."
+    - export DEPLOYPATH=/home/sepherot/awaisali.ca
+
+    - echo "[DEPLOY] Building app..."
+    - cp -r dist/* $DEPLOYPATH
+
+    - echo "[DEPLOY] Finished deploying."
