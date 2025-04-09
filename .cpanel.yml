@@ -8,5 +8,5 @@ deployment:
     - echo "[DEPLOY] Installing node modules..."
     - ~/.local/bin/npm install # install all npm modules
     - echo "[DEPLOY] Building app..."
-    - ~/.local/bin/npm run build -- --max-old-space-size=1024 # this should build directly into DEPLOYPATH if specified
+    - ~/.local/bin/npm run build # this should build directly into DEPLOYPATH if specified
     - echo "[DEPLOY] Finish deploy."
