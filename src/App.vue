@@ -17,7 +17,7 @@ import Contact from './components/Contact.vue'
         <Contact />
     </main>
     <footer>
-        v1.0-test.1
+        v1.0-test.2
     </footer>
 </template>
 
