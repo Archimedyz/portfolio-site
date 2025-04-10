@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 
 // asset imports
-import laptopServerImage from '/src/assets/laptop-servers.png';
-import globePinImage from '/src/assets/globe-pin.png';
-import chessPiecesImage from '/src/assets/chess-pieces.png';
+import laptopServerImage from '/src/assets/images/laptop-servers.png';
+import globePinImage from '/src/assets/images/globe-pin.png';
+import chessPiecesImage from '/src/assets/images/chess-pieces.png';
 
 const carouselLst = ref([
     { text: "a backend developer.", img_src: laptopServerImage },

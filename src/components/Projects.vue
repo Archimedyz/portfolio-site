@@ -3,7 +3,7 @@
 import ProjCard from './ProjCard.vue';
 
 // asset imports
-import portfolioImage from '/src/assets/proj-portfolio-site.png';
+import portfolioImage from '/src/assets/images/proj-portfolio-site.png';
 </script>
 
 <template>
