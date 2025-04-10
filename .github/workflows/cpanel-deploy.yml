@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set commit hash environment variable
-      run: echo "VITE_COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+      run: echo "DEPLOY_COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -31,7 +31,7 @@ jobs:
     - name: Build application
       run: npm run build
       env:
-        VITE_COMMIT_HASH: ${{ env.VITE_COMMIT_HASH }}
+        VITE_COMMIT_HASH: ${{ env.DEPLOY_COMMIT_HASH }}
 
     - name: Checkout deploy branch
       uses: actions/checkout@v4
@@ -46,7 +46,7 @@ jobs:
 
     - name: Get original commit subject
       run: |
-        ORIGINAL_COMMIT_SUBJECT=$(git log -1 --pretty=%s ${{ github.event.before }})
+        ORIGINAL_COMMIT_SUBJECT=$(git log -1 --pretty=%s ${{ env.DEPLOY_COMMIT_HASH }})
         echo "ORIGINAL_COMMIT_SUBJECT=$ORIGINAL_COMMIT_SUBJECT" >> $GITHUB_ENV
 
     - name: Commit and push deploy branch
