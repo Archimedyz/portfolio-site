@@ -1,0 +1,59 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: cPanel Deploy - CI/CD
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set commit hash environment variable
+      run: echo "DEPLOY_COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 'lts/*'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build application
+      run: npm run build
+      env:
+        VITE_COMMIT_HASH: ${{ env.DEPLOY_COMMIT_HASH }}
+
+    - name: Checkout deploy branch
+      uses: actions/checkout@v4
+      with:
+        ref: cpanel
+        path: deploy-branch
+
+    - name: Copy built files to deploy branch
+      run: |
+        rm -rf deploy-branch/dist/*
+        cp -r dist/* deploy-branch/dist
+
+    - name: Get original commit subject
+      run: |
+        ORIGINAL_COMMIT_SUBJECT=$(git log -1 --pretty=%s ${{ env.DEPLOY_COMMIT_HASH }})
+        echo "ORIGINAL_COMMIT_SUBJECT=$ORIGINAL_COMMIT_SUBJECT" >> $GITHUB_ENV
+
+    - name: Commit and push deploy branch
+      run: |
+        cd deploy-branch
+        git config --local user.name "GitHub Actions Bot"
+        git config --local user.email "actions@github.com"
+        git add .
+        git commit -m "Deploy: ${{ env.ORIGINAL_COMMIT_SUBJECT }}" || echo "No changes to commit"
+        git push origin cpanel

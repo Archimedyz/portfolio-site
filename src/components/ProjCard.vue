@@ -3,7 +3,7 @@ import { computed } from 'vue';
 
 // asset imports
 import openLinkImage from '/src/assets/icons/open-link.png';
-import repoLinkImage from '/src/assets/icons/Github_Invertocat_light.svg';
+import repoLinkImage from '/src/assets/icons/GitHub_Invertocat_Light.svg';
 
 const props = defineProps([
     'title', 'description', 'projectTech', 'imgSrc', 'siteLink', 'repoLink'
