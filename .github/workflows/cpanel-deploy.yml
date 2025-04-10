@@ -6,7 +6,7 @@ name: cPanel Deploy - CI/CD
 on:
   push:
     branches:
-      - 'feature/deploy'
+      - 'main'
 
 jobs:
   build:
