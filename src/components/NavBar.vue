@@ -115,6 +115,7 @@ onMounted(() => {
 
 .nav-menu {
     text-align: right;
+    padding-top: 10px;
 }
 
 .nav-toggle {
@@ -122,7 +123,7 @@ onMounted(() => {
     cursor: pointer;
     display: inline-block;
     margin-right: 15px;
-    margin-top: 8px;
+    margin-top: 15px;
 }
 
 .nav-toggle path {
@@ -159,6 +160,14 @@ onMounted(() => {
     .nav-link-flex {
         flex-direction: column;
     }
+
+    .nav-toggle {
+        margin-top: 15px;
+    }
+
+    .nav-menu {
+        padding-top: 0;
+    }
 }
 
 /* Mobile styles */
@@ -170,6 +179,10 @@ onMounted(() => {
 
     .nav-link {
         font-size: 1.4rem;
+    }
+
+    .nav-toggle {
+        margin-top: 10px;
     }
 }
 </style>
